@@ -1,0 +1,155 @@
+.mainDash {
+  display: flex;
+  flex-direction: row;
+  height: 100vh; /* Adjust the height as needed */
+  background-color: #f0f0f0; /* Background color for the entire section */
+
+  > div {
+    flex: 0 0 250px;
+    // background-color: $black;
+    background-image: #111828;
+    color: #f1f1f1;
+  }
+
+  > div:nth-child(2) {
+    flex-grow: 1; /* Allow the main content area to grow and fill the remaining space */
+    background-color: #111828; /* Main content area background color */
+    padding: 20px;
+  }
+}
+
+// .sideBarContainer {
+//   display: flex;
+//   flex-direction: column;
+//   width: 250px;
+//   color: white; /* Text color */
+//   background-color: #212529; /* Dark background color */
+//   height: 100%;
+//   overflow-y: auto; /* Add scroll if content exceeds the sidebar's height */
+
+//   > div:first-child {
+//     background-color: #343a40; /* Header background color */
+//     padding: 20px;
+//     text-align: center;
+
+//     h2 {
+//       font-size: 1.4rem;
+//       font-weight: 600;
+//       letter-spacing: 1px;
+//       color: #f8f9fa; /* Header text color */
+//       padding: 0.8rem;
+//       margin: 1.5rem 0; /* Header text size */
+//     }
+//   }
+
+//   > div:last-child {
+//     padding: 2rem;
+
+//     a {
+//       display: flex;
+//       align-items: center;
+//       font-size: 1.4rem;
+//       color: #f8f9fa; /* Link text color */
+//       text-decoration: none;
+//       margin-bottom: 2rem; /* Adjust the spacing between links */
+//       transition: background-color 0.3s ease; /* Smooth background color transition */
+
+//       &:hover {
+//         background-color: #343a40; /* Hover background color */
+//         color: #ffc107; /* Hover link text color */
+//         padding: 0.4rem;
+//         border-radius: 5px;
+//       }
+
+//       svg {
+//         margin-right: 10px; /* Increase spacing between icon and text */
+//         font-size: 1.6rem; /* Increase icon size */
+//         color: #ffc107; /* Icon color */
+//       }
+//     }
+//   }
+// }
+.sideBarContainer {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  color: #fff; /* Text color */
+  background: linear-gradient(
+    to bottom,
+    #20232a,
+    #292c35
+  ); /* Gradient background */
+  height: 100%;
+  overflow-y: auto; /* Add scroll if content exceeds the sidebar's height */
+
+  > div:first-child {
+    background-color: #292c35; /* Header background color */
+    padding: 20px;
+    text-align: center;
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #61dafb; /* Header text color */
+      padding: 0.8rem;
+      margin: 1.5rem 0; /* Header text size */
+    }
+  }
+
+  > div:last-child {
+    padding: 2rem;
+
+    a {
+      display: flex;
+      align-items: center;
+      font-size: 1.4rem;
+      color: #fff; /* Link text color */
+      text-decoration: none;
+      margin-bottom: 2rem; /* Adjust the spacing between links */
+      transition: transform 0.2s ease, background-color 0.3s ease; /* Smooth hover animations */
+
+      &:hover {
+        background-color: #61dafb;
+        border-radius: 4px;
+        color: #20232a;
+        transform: translateX(5px);
+        > svg {
+          color: #20232a;
+          transform: translateX(5px);
+        }
+      }
+
+      svg {
+        margin-right: 10px; /* Increase spacing between icon and text */
+        font-size: 1.6rem; /* Increase icon size */
+        color: #61dafb; /* Icon color */
+      }
+    }
+  }
+}
+
+.mainDashCo {
+  display: flex;
+  flex-direction: column;
+  > div {
+    padding: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    > h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: $color4;
+    }
+  }
+}
+.cards {
+  display: flex;
+  gap: 10px;
+  padding-right: 5px;
+  > div {
+    width: 100%;
+    border: 1px solid seashell;
+  }
+}
