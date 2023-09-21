@@ -28,28 +28,6 @@ export const addVideoReducer = createReducer(
 );
 
 
-export const ideoReducer = createReducer(
-  {},
-  {
-      allVideoRequest:(state) => {
-          state.loading = true;
-          state.videos = [];
-        },
-        allVideoSuccess:(state , action)=> {
-          state.loading = false;
-          state.videos = action.payload.videos;
-
-        },
-        allVideoFail:(state, action)=> {
-          state.loading = false;
-          state.error = action.payload;
-        },
-
-        clearErrors:(state)=> {
-          state.error = null;
-        },
-  }
-)
 const initialState = {
   loading: false,
   videos: null,
