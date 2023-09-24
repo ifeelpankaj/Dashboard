@@ -11,7 +11,6 @@ export const authReducer = createReducer(
       state.isAuthenticated = true;
       state.user = action.payload.user;
       state.message = action.payload.message;
-
     },
     loginFailure: (state, action) => {
       state.loading = false;
@@ -151,6 +150,24 @@ export const profileReducer = createReducer(
 
     clearMessage: (state) => {
       state.message = null;
+    },
+  }
+);
+
+export const getUserReducer = createReducer(
+  {},
+  {
+    allUserRequest: (state) => {
+      state.loading = true;
+      state.users = [];
+    },
+    allUserSuccess: (state = { users: [] }, action) => {
+      state.loading = false;
+      state.users = action.payload.users;
+    },
+    allUserFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
     },
   }
 );

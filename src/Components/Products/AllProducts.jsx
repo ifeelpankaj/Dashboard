@@ -4,6 +4,7 @@ import { getAllItems } from "../../Redux/Actions/ItemAction";
 import ProductCard from "./ProductCard";
 import SearchBar from "./SearchBar";
 
+
 const AllProducts = () => {
   const dispatch = useDispatch();
 
@@ -13,6 +14,7 @@ const AllProducts = () => {
     dispatch(getAllItems());
   }, [dispatch]);
   const handleSearch = (query) => {};
+
 
   return (
     <Fragment>

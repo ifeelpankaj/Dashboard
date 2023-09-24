@@ -1,7 +1,9 @@
 import React, { Fragment } from "react";
+import { useSelector } from "react-redux";
 
 const MainDash = () => {
 
+  const { products } = useSelector((state) => state.items);
 
   return (
     <Fragment>
@@ -14,8 +16,8 @@ const MainDash = () => {
            
             <h3>TOTAL REVENUE</h3>
           </div>
-          <div>TOTAL PRODUCTS</div>
-          <div>TOTAL ORDERS</div>
+          {/* <div>{products.length}</div> */}
+          <div>TOTAL USER</div>
           <div>TOTAL ORDERS</div>
         </span>
       </section>

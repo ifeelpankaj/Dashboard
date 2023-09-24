@@ -20,7 +20,7 @@ const SidNav = () => {
           <Link to="/products">
             <BsClipboardCheckFill /> Product
           </Link>
-          <Link to="/dashboard">
+          <Link to="/user">
             <BiSolidUserPin /> User
           </Link>
           <Link to="/dashboard">

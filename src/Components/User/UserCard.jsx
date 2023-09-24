@@ -1,40 +1,10 @@
-import React, {useEffect } from "react";
-import { Button } from "@chakra-ui/react";
+import React from 'react'
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { deleteProduct } from "../../Redux/Actions/ItemAction";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-hot-toast";
+import { useDispatch } from 'react-redux'
 
-const ProductCard = ({ productId, category, Stock, name, avatar, price }) => {
-  const dispatch = useDispatch();
-  const { loading, message, error } = useSelector((state) => state.modify);
-
-  useEffect(() => {
-    if (error) {
-      toast.error(error);
-      dispatch({ type: "clearError" });
-    }
-
-    if (message) {
-      toast.success(message);
-      dispatch({ type: "clearMessage" });
-    }
-  }, [dispatch, error, message]);
-
-  useEffect(() => {
-    if (message) {
-      const timer = setTimeout(() => {
-        dispatch({ type: "clearMessage" });
-      }, 5000); // Adjust the timeout as needed
-      return () => clearTimeout(timer);
-    }
-  }, [dispatch, message]);
-
-  const handleUpdate = () => {};
-  const handleDelete = () => {
-    dispatch(deleteProduct(productId));
-  };
+const UserCard = ({userId,avatar,role,name,cart,wishlist}) => {
+    const dispatch =useDispatch();
 
   return (
     <motion.div
@@ -44,7 +14,7 @@ const ProductCard = ({ productId, category, Stock, name, avatar, price }) => {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <Link to={`/product/${productId}`}>
+      <Link to={`/user/${userId}`}>
         <motion.img
           src={avatar}
           alt={name}
@@ -75,7 +45,7 @@ const ProductCard = ({ productId, category, Stock, name, avatar, price }) => {
               color: "$color1",
             }}
           >
-            Product Id: {productId}
+            User Id: {userId}
           </p>
         </motion.h3>
       </Link>
@@ -89,22 +59,9 @@ const ProductCard = ({ productId, category, Stock, name, avatar, price }) => {
           width: "10vw",
         }}
       >
-        <span style={{ fontSize: "larger", color: "$black" }}> ₹{price}</span>
+        <span style={{ fontSize: "larger", color: "$black" }}> {role}</span>
       </motion.p>
 
-      <motion.h4
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-        style={{
-          padding: "2rem",
-          fontSize: "larger",
-          borderLeft: "1px dashed $black",
-          width: "10vw",
-        }}
-      >
-        {category}
-      </motion.h4>
 
       <motion.h5
         initial={{ opacity: 0 }}
@@ -118,9 +75,23 @@ const ProductCard = ({ productId, category, Stock, name, avatar, price }) => {
           width: "10vw",
         }}
       >
-        {Stock}
+        {cart}
       </motion.h5>
-      <motion.div
+      <motion.h5
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        style={{
+          padding: "2rem",
+          fontSize: "larger",
+          borderLeft: "1px dashed $black",
+          borderRight: "1px dashed $black",
+          width: "10vw",
+        }}
+      >
+        {wishlist}
+      </motion.h5>
+      {/* <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.6 }}
@@ -150,9 +121,9 @@ const ProductCard = ({ productId, category, Stock, name, avatar, price }) => {
             Delete
           </Button>
         </motion.div>
-      </motion.div>
+      </motion.div> */}
     </motion.div>
-  );
-};
+  )
+}
 
-export default ProductCard;
+export default UserCard

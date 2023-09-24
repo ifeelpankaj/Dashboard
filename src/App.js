@@ -7,6 +7,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import AddProduct from './Components/Products/AddProduct';
 import AllProducts from './Components/Products/AllProducts';
 import ProductDetail from './Components/Products/ProductDetail';
+import AllUser from './Components/User/AllUser';
 
 
 function App() {
@@ -24,6 +25,10 @@ function App() {
           <Route path="/add-products" element={<AddProduct/>} />
           <Route path="/products" element={<AllProducts/>} />
           <Route exact path="/product/:id" element={<ProductDetail/>} />
+
+          {/* User Conner  */}
+          <Route exact path="/user" element={<AllUser/>} />
+
 
 
 

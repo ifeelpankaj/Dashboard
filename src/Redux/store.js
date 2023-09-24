@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { authReducer, profileReducer } from "./Reducers/UserReducer";
+import { authReducer, getUserReducer, profileReducer } from "./Reducers/UserReducer";
 import {
   addItemReducer,
 
@@ -40,6 +40,8 @@ const store = configureStore({
     Order: newOrderReducer,
     myOrder:myOrderReducer,
     orderDetail:orderDetailReducer,
+
+    getUser:getUserReducer,
   },
 });
 

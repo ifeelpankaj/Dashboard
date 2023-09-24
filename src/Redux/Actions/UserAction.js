@@ -21,24 +21,7 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
-export const register = (formData) => async (dispatch) => {
-  try {
-    dispatch({ type: "registerRequest" });
 
-    const { data } = await axios.post(`/attar/v1/register`, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
-
-    dispatch({ type: "registerSuccess", payload: data });
-  } catch (error) {
-    dispatch({
-      type: "registerFailure",
-      payload: error.response.data.message,
-    });
-  }
-};
 
 export const loadUser = () => async (dispatch) => {
   try {
@@ -151,3 +134,22 @@ export const resetPassword = (oldPassword, newPassword) => async (dispatch) => {
     });
   }
 };
+
+export const getUser = ()=> async (dispatch)=>{
+  try {
+    dispatch({
+      type: "allUserRequest",
+    });
+    const { data } = await axios.get(`/attar/v1/get-all-user`);
+    dispatch({
+      type: "allUserSuccess",
+      payload: data,
+    });
+    
+  } catch (error) {
+    dispatch({
+      type: "allUserFail",
+      payload: error.response.data.message,
+    });
+  }
+}
