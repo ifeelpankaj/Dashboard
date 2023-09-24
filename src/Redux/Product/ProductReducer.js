@@ -1,5 +1,11 @@
 import { createReducer } from "@reduxjs/toolkit";
+const initialState = {
+    loading: false,
+    product:[],
+    error: null,
+  };
 
+  
 export const itemReducer = createReducer(
   {},
   {
@@ -53,13 +59,6 @@ export const addItemReducer = createReducer(
   }
 );
 
-const initialState = {
-  loading: false,
-  product:[],
-  error: null,
-};
-
-
 export const itemDetailReducer = createReducer(
   { initialState },
   {
@@ -70,7 +69,6 @@ export const itemDetailReducer = createReducer(
     detailSuccess: (state, action) => {
       state.loading = false;
       state.product = action.payload.product;
-      // console.log("Reducer Data" ,action.payload.product)
     },
     detailFailure: (state, action) => {
       state.loading = false;
@@ -81,19 +79,19 @@ export const itemDetailReducer = createReducer(
     },
   }
 );
-
-export const productReviewsReducer = createReducer (
-  { reviews: [] },{
-    allReviewRequest:(state) => {
+export const productReviewsReducer = createReducer(
+  { reviews: [] },
+  {
+    allReviewRequest: (state) => {
       state.loading = true;
       state.error = null;
     },
-    allReviewSuccess:(state, action)=> {
+    allReviewSuccess: (state, action) => {
       state.loading = false;
       state.reviews = action.payload;
       state.message = action.payload.message;
     },
-    allReviewFail:(state, action)=>{
+    allReviewFail: (state, action) => {
       state.loading = false;
       state.error = action.payload;
     },
@@ -104,39 +102,40 @@ export const productReviewsReducer = createReducer (
     clearMessage: (state) => {
       state.message = null;
     },
-  }) ;
-  export const updateItemReducer = createReducer(
-    {},
-    {
-      updateProductRequest(state) {
-        state.loading = true;
-      },
-      updateProductSuccess(state, action) {
-        state.loading = false;
-        state.success = action.payload.success;
-        state.message = action.payload;
-      },
-      updateProductFail(state, action) {
-        state.loading = false;
-        state.error = action.payload;
-      },
-      deleteProductRequest(state) {
-        state.loading = true;
-      },
-      deleteProductSuccess(state, action) {
-        state.loading = false;
-        state.success = action.payload.success;
-        state.message = action.payload;
-      },
-      deleteProductFail(state, action) {
-        state.loading = false;
-        state.error = action.payload;
-      },
-      clearMessage: (state) => {
-        state.message = null;
-      },
-      clearError: (state) => {
-        state.error = null;
-      },
-    }
-  );
+  }
+);
+export const updateItemReducer = createReducer(
+  {},
+  {
+    updateProductRequest(state) {
+      state.loading = true;
+    },
+    updateProductSuccess(state, action) {
+      state.loading = false;
+      state.success = action.payload.success;
+      state.message = action.payload;
+    },
+    updateProductFail(state, action) {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    deleteProductRequest(state) {
+      state.loading = true;
+    },
+    deleteProductSuccess(state, action) {
+      state.loading = false;
+      state.success = action.payload.success;
+      state.message = action.payload;
+    },
+    deleteProductFail(state, action) {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    clearMessage: (state) => {
+      state.message = null;
+    },
+    clearError: (state) => {
+      state.error = null;
+    },
+  }
+);

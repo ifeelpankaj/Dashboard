@@ -3,8 +3,8 @@ import { AiOutlineLogin, AiOutlineLogout } from "react-icons/ai";
 import { Button } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logoutUser } from "../../Redux/Actions/UserAction";
 import { toast } from "react-hot-toast";
+import { login, logoutUser } from "../../Redux/Auth/AuthAction";
 
 const Login = () => {
   const [email, setEmail] = useState("");

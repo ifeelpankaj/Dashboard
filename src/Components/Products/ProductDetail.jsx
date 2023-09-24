@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getProductDetails, updateProduct } from "../../Redux/Actions/ItemAction";
-import { motion } from "framer-motion"; // Step 2
+
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { motion } from 'framer-motion'; // Step 2
+import { getProductDetails } from '../../Redux/Product/ProductAction';
 
 // const ProductDetail = () => {
 //   const dispatch = useDispatch();

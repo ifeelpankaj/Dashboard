@@ -5,12 +5,12 @@ import { FcGallery } from "react-icons/fc";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useDispatch, useSelector } from "react-redux";
-import { createNewItem } from "../../Redux/Actions/ItemAction";
 import EditorToolbar, {
   modules,
   formats,
 } from "../EditorToolbar/EditorToolbar";
 import { toast } from "react-hot-toast";
+import { createNewItem } from "../../Redux/Product/ProductAction";
 
 const AddProduct = () => {
   const [name, setName] = useState("");
