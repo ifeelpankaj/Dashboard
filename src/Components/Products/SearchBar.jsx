@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { searchProducts } from "../../Redux/Actions/ItemAction";
 import { useDispatch } from "react-redux";
 import { Button } from "@chakra-ui/react";
 import{FaSearchengin} from 'react-icons/fa';
 import {motion} from 'framer-motion'
+import { searchProducts } from "../../Redux/Product/ProductAction";
 
 const SearchBar = ({ onSearch }) => {
   const [keyword, setSearchText] = useState("");

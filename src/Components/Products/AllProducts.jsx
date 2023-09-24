@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllItems } from "../../Redux/Actions/ItemAction";
 import ProductCard from "./ProductCard";
 import SearchBar from "./SearchBar";
+import { getAllItems } from "../../Redux/Product/ProductAction";
 
 const AllProducts = () => {
   const dispatch = useDispatch();

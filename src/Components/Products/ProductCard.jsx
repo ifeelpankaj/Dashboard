@@ -1,10 +1,11 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Button } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { deleteProduct, getAllItems } from "../../Redux/Actions/ItemAction";
+
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
+import { deleteProduct } from "../../Redux/Product/ProductAction";
 
 const ProductCard = ({ productId, category, Stock, name, avatar, price }) => {
   const dispatch = useDispatch();
