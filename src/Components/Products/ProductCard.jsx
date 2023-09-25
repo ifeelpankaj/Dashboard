@@ -1,42 +1,13 @@
 
-import React, { useEffect } from "react";
+import React from "react";
 import { Button } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-hot-toast";
-import { deleteProduct } from "../../Redux/Product/ProductAction";
+import {LiaBanSolid} from "react-icons/lia";
 
 const ProductCard = ({ productId, category, Stock, name, avatar, price }) => {
-  const dispatch = useDispatch();
-  const { loading, message, error } = useSelector((state) => state.modify);
 
-  useEffect(() => {
-    if (error) {
-      toast.error(error);
-      dispatch({ type: "clearError" });
-    }
 
-    if (message) {
-      toast.success(message);
-      dispatch({ type: "clearMessage" });
-    }
-  }, [dispatch, error, message]);
-
-  useEffect(() => {
-    if (message) {
-      const timer = setTimeout(() => {
-        dispatch({ type: "clearMessage" });
-      }, 5000); // Adjust the timeout as needed
-      return () => clearTimeout(timer);
-    }
-  }, [dispatch, message]);
-
-  const handleUpdate = () => {};
-  const handleDelete = () => {
-    dispatch(deleteProduct(productId));
-  };
 
   return (
     <motion.div
@@ -47,6 +18,8 @@ const ProductCard = ({ productId, category, Stock, name, avatar, price }) => {
       transition={{ duration: 0.5 }}
     >
       <Link to={`/product/${productId}`}>
+      <div>
+      {avatar ? (
         <motion.img
           src={avatar}
           alt={name}
@@ -55,6 +28,10 @@ const ProductCard = ({ productId, category, Stock, name, avatar, price }) => {
           transition={{ duration: 0.5, delay: 0.1 }}
           style={{ width: "15vw", marginRight: "1rem" }}
         />
+      ) : (
+        <LiaBanSolid size={40} color="gray" /> // Render an icon (e.g., user icon) as a placeholder
+      )}
+    </div>
 
         <motion.h3
           initial={{ opacity: 0 }}
@@ -134,24 +111,12 @@ const ProductCard = ({ productId, category, Stock, name, avatar, price }) => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.7 }}
         >
-          <Button onClick={handleUpdate}>Update</Button>
+          <Link to={`/product/${productId}`}>
+          <Button>Action</Button>
+          </Link>
         </motion.div>
 
-        <motion.div
-          whileHover={{ scale: 1.1 }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-        >
-          <Button
-            isDisabled={loading}
-            isLoading={loading}
-            onClick={handleDelete}
-            colorScheme="red"
-          >
-            Delete
-          </Button>
-        </motion.div>
+        
       </motion.div>
     </motion.div>
   );

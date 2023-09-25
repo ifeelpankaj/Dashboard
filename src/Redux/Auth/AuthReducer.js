@@ -54,3 +54,49 @@ export const authReducer = createReducer(
 );
 
 
+export const getUserReducer = createReducer(
+  {},
+  {
+    allUserRequest: (state) => {
+      state.loading = true;
+      state.users = [];
+    },
+    allUserSuccess: (state = { users: [] }, action) => {
+      state.loading = false;
+      state.users = action.payload.users;
+    },
+    allUserFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+  }
+);
+const initialState = {
+  loading: false,
+  user:[],
+  error: null,
+};
+
+export const userDetailReducer = createReducer(
+  { initialState },
+  {
+    userDetailRequest: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    userDetailSuccess: (state, action) => {
+      state.loading = false;
+      state.user = action.payload.user;
+    },
+    userDetailFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    clearErrors: (state) => {
+      state.error = null;
+    },
+    clearMessage: (state) => {
+      state.message = null;
+    },
+  }
+);

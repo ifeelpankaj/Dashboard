@@ -76,7 +76,7 @@ const AddProduct = () => {
     images.forEach((image) => {
       myForm.append("images", image); // Append the selected files, not the data URLs
     });
-
+    console.log(myForm)
     dispatch(createNewItem(myForm));
   };
 
@@ -145,11 +145,6 @@ const AddProduct = () => {
                 modules={modules}
                 formats={formats}
               />
-              {/* <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder={"Description."}
-              /> */}
             </span>
             <Button
               rightIcon={<AiOutlineLogin />}

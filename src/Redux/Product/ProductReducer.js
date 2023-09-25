@@ -104,21 +104,10 @@ export const productReviewsReducer = createReducer(
     },
   }
 );
-export const updateItemReducer = createReducer(
+export const deleteItemReducer = createReducer(
   {},
   {
-    updateProductRequest(state) {
-      state.loading = true;
-    },
-    updateProductSuccess(state, action) {
-      state.loading = false;
-      state.success = action.payload.success;
-      state.message = action.payload;
-    },
-    updateProductFail(state, action) {
-      state.loading = false;
-      state.error = action.payload;
-    },
+  
     deleteProductRequest(state) {
       state.loading = true;
     },
@@ -128,6 +117,30 @@ export const updateItemReducer = createReducer(
       state.message = action.payload;
     },
     deleteProductFail(state, action) {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    clearMessage: (state) => {
+      state.message = null;
+    },
+    clearError: (state) => {
+      state.error = null;
+    },
+  }
+);
+export const updateItemReducer = createReducer(
+  {},
+  {
+  
+    updateProductRequest(state) {
+      state.loading = true;
+    },
+    updateProductSuccess(state, action) {
+      state.loading = false;
+      state.success = action.payload.success;
+      state.message = action.payload;
+    },
+    updateProductFail(state, action) {
       state.loading = false;
       state.error = action.payload;
     },

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "./ProductCard";
 import SearchBar from "./SearchBar";
 import { getAllItems } from "../../Redux/Product/ProductAction";
+import { LiaBanSolid } from "react-icons/lia";
 
 
 const AllProducts = () => {
@@ -38,7 +39,7 @@ const AllProducts = () => {
                 <ProductCard
                   productId={product._id}
                   name={product.name}
-                  avatar={product.images[0].url}
+                  avatar={product.images[0]?.url }
                   price={product.price}
                   stock={product.Stock}
                   category={product.category}

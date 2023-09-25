@@ -8,6 +8,7 @@ import AddProduct from './Components/Products/AddProduct';
 import AllProducts from './Components/Products/AllProducts';
 import ProductDetail from './Components/Products/ProductDetail';
 import AllUser from './Components/User/AllUser';
+import UserDetail from './Components/User/UserDetail';
 
 
 function App() {
@@ -28,6 +29,8 @@ function App() {
 
           {/* User Conner  */}
           <Route exact path="/user" element={<AllUser/>} />
+          <Route exact path="/user/:id" element={<UserDetail/>} />
+
 
 
 

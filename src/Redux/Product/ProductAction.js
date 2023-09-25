@@ -104,24 +104,25 @@ export const getAllItems = () => async (dispatch) => {
     }
   };
 
-  export const updateProduct = (id, productData) => async (dispatch) => {
+  export const updateProduct = (id, formData) => async (dispatch) => {
     try {
       dispatch({ type: 'updateProductRequest' });
-  
+      
       const config = {
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "multipart/form-data", },
       };
   
       const { data } = await axios.put(
-        `/api/v1/admin/product/${id}`,
-        productData,
+        `/attar/v1/update-product/${id}`,
+        formData,
         config
       );
   
       dispatch({
         type: 'updateProductSuccess',
-        payload: data.success,
+        payload: data.message,
       });
+    
     } catch (error) {
       dispatch({
         type: 'updateProductFail',
@@ -151,4 +152,4 @@ export const getAllItems = () => async (dispatch) => {
       });
     }
   };
-  
+ 

@@ -49,3 +49,42 @@ export const login = (email, password) => async (dispatch) => {
       });
     }
   };
+
+  export const getUser = ()=> async (dispatch)=>{
+    try {
+      dispatch({
+        type: "allUserRequest",
+      });
+      const { data } = await axios.get(`/attar/v1/get-all-user`);
+      dispatch({
+        type: "allUserSuccess",
+        payload: data,
+      });
+      
+    } catch (error) {
+      dispatch({
+        type: "allUserFail",
+        payload: error.response.data.message,
+      });
+    }
+  }
+
+  export const getUserDetails = (id) => async (dispatch) => {
+    try {
+      dispatch({ type: "userDetailRequest" });
+  
+      const { data } = await axios.get(`/attar/v1/user/${id}`);
+      dispatch({
+        type: "userDetailSuccess",
+        payload: data,
+      });
+      return data; 
+     
+    } catch (error) {
+      dispatch({
+        type: "userDetailFailure",
+        payload: error.response.data.message,
+      });
+    }
+  };
+  

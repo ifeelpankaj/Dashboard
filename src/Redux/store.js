@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import { authReducer } from "./Auth/AuthReducer";
-import { addItemReducer, itemDetailReducer, itemReducer, updateItemReducer } from "./Product/ProductReducer.js";
+import { authReducer, getUserReducer, userDetailReducer } from "./Auth/AuthReducer";
+import { addItemReducer, itemDetailReducer, itemReducer, deleteItemReducer, updateItemReducer } from "./Product/ProductReducer.js";
 
 
 
@@ -9,6 +9,8 @@ const store = configureStore({
   reducer: {
     //Authentication
     auth: authReducer,
+    getUser:getUserReducer,
+    userInfo:userDetailReducer,
 
     //Admin
     addItem: addItemReducer,
@@ -17,7 +19,9 @@ const store = configureStore({
     //Items
     items: itemReducer,
     details:itemDetailReducer,
-    modify:updateItemReducer,
+    update:updateItemReducer,
+    delete:deleteItemReducer,
+
     
   },
 });
