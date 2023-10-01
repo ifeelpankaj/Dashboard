@@ -100,3 +100,28 @@ export const userDetailReducer = createReducer(
     },
   }
 );
+
+export const updateUserReducer = createReducer(
+  {},
+  {
+  
+    updateUserRequest(state) {
+      state.loading = true;
+    },
+    updateUserSuccess(state, action) {
+      state.loading = false;
+      state.success = action.payload.success;
+      state.message = action.payload;
+    },
+    updateUserFail(state, action) {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    clearMessage: (state) => {
+      state.message = null;
+    },
+    clearError: (state) => {
+      state.error = null;
+    },
+  }
+);

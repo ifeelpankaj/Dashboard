@@ -7,15 +7,13 @@ const AllUser = () => {
   const dispatch = useDispatch();
 
   const { users } = useSelector((state) => state.getUser);
-  console.log(users);
+  // console.log(users);
   useEffect(() => {
     dispatch(getUser());
   }, [dispatch]);
   return (
     <main className="mainctr">
-      {/* <div className="fixed-search-bar">
-      <SearchBar onSearch={handleSearch} />
-    </div> */}
+     
       <div className="content">
         <div className="product-header">
           <div className="product-header-item-1">Avatar</div>
@@ -28,14 +26,18 @@ const AllUser = () => {
         {users && users.length > 0 ? (
           users.map((user) => (
             <div key={user._id} className="product-item">
-              <UserCard
-                userId={user._id}
-                name={user.name}
-                avatar={user.avatar.url}
-                role={user.role}
-                cart={user.cart.length} 
-                wishlist={user.wishlist.length}
-              />
+              {user.avatar ? (
+                <UserCard
+                  userId={user._id}
+                  name={user.name}
+                  avatar={user.avatar.url}
+                  role={user.role}
+                  cart={user.cart.length}
+                  wishlist={user.wishlist.length}
+                />
+              ) : (
+                <span>No avatar available</span>
+              )}
             </div>
           ))
         ) : (

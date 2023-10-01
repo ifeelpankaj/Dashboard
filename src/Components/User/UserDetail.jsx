@@ -1,32 +1,58 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { getUserDetails } from '../../Redux/Auth/AuthAction';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { getUserDetails, updateUser } from "../../Redux/Auth/AuthAction";
 
 const UserDetail = () => {
+  const dispatch = useDispatch();
+  const { user, loading, error } = useSelector((state) => state.userInfo);
+  const { id } = useParams();
+  const [newRole, setNewRole] = useState(user ? user.role : ''); 
 
-    const dispatch = useDispatch();
+  const email = user ? user.email : '';
 
-    const { user } = useSelector((state) => state.userInfo);
+  const handleRoleChange = () => {
+    if (user) {
+      dispatch(updateUser(email, newRole));
+    }
+  };
 
-    console.log(user)
+  useEffect(() => {
+    dispatch(getUserDetails(id));
+  }, [dispatch, id]);
 
-    const { id } = useParams();
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
-    useEffect(() => {
-        dispatch(getUserDetails(id));
-      }, [dispatch, id]);
+  if (!user) {
+    return null; 
+  }
 
   return (
     <div className="user-profile">
       <div className="avatar">
-        <img src={user.avatar.url} alt="User Avatar" />
+        {user.avatar && <img src={user.avatar.url} alt="User Avatar" />}
       </div>
       <div className="user-info">
         <h2>{user.name}</h2>
         <p>Email: {user.email}</p>
-        <p>Role: {user.role}</p>
+        <p>
+          Role:
+          <select
+            value={newRole}
+            onChange={(e) => setNewRole(e.target.value)}
+          >
+            <option value="Buyer">Buyer</option>
+            <option value="Vendor">Vendor</option>
+            <option value="Admin">Admin</option>
+          </select>
+          <button onClick={handleRoleChange}>Update Role</button>
+        </p>
         <p>Member Since: {new Date(user.createdAt).toLocaleDateString()}</p>
         {user.cart.length > 0 && (
           <div className="cart-info">
@@ -41,8 +67,10 @@ const UserDetail = () => {
           </div>
         )}
       </div>
+      
     </div>
-  )
-}
+  );
+};
 
-export default UserDetail
+
+export default UserDetail;

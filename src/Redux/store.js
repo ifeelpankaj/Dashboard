@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import { authReducer, getUserReducer, userDetailReducer } from "./Auth/AuthReducer";
+import { authReducer, getUserReducer, updateUserReducer, userDetailReducer } from "./Auth/AuthReducer";
 import { addItemReducer, itemDetailReducer, itemReducer, deleteItemReducer, updateItemReducer } from "./Product/ProductReducer.js";
 
 
@@ -11,6 +11,7 @@ const store = configureStore({
     auth: authReducer,
     getUser:getUserReducer,
     userInfo:userDetailReducer,
+    updateUser:updateUserReducer,
 
     //Admin
     addItem: addItemReducer,
