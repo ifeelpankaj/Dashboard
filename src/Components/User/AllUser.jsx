@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import UserCard from "./UserCard";
 import { getUser } from "../../Redux/Auth/AuthAction";
@@ -6,11 +6,20 @@ import { getUser } from "../../Redux/Auth/AuthAction";
 const AllUser = () => {
   const dispatch = useDispatch();
 
-  const { users } = useSelector((state) => state.getUser);
-  // console.log(users);
+  const { users,totalPages  } = useSelector((state) => state.getUser);
+
+  const [page, setPage] = useState(1);
+
+
   useEffect(() => {
-    dispatch(getUser());
-  }, [dispatch]);
+   
+    dispatch(getUser(page));
+  }, [dispatch, page]);
+
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
+  };
+
   return (
     <main className="mainctr">
      
@@ -44,6 +53,19 @@ const AllUser = () => {
           <h2>Loading</h2>
         )}
       </div>
+      <div className="pagination">
+          <button onClick={() => handlePageChange(page - 1)} disabled={page === 1}>
+            Previous
+          </button>
+          <span>
+            Page {page} of {totalPages}
+          </span>
+          <button onClick={() => handlePageChange(page + 1)} disabled={page === totalPages}>
+            Next
+          </button>
+
+          
+        </div>
     </main>
   );
 };

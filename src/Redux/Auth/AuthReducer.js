@@ -64,6 +64,8 @@ export const getUserReducer = createReducer(
     allUserSuccess: (state = { users: [] }, action) => {
       state.loading = false;
       state.users = action.payload.users;
+      state.totalPages= action.payload.totalPages;
+      state.totalUser= action.payload.totalUser;
     },
     allUserFail: (state, action) => {
       state.loading = false;

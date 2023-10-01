@@ -23,7 +23,7 @@ const SidNav = () => {
           <Link to="/user">
             <BiSolidUserPin /> User
           </Link>
-          <Link to="/dashboard">
+          <Link to="/orders">
             <CiDeliveryTruck /> Order
           </Link>
           <Link to="/dashboard">

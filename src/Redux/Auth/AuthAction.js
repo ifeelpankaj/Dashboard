@@ -50,16 +50,19 @@ export const logoutUser = () => async (dispatch) => {
   }
 };
 
-export const getUser = () => async (dispatch) => {
+export const getUser = (page) => async (dispatch) => {
   try {
     dispatch({
       type: "allUserRequest",
     });
-    const { data } = await axios.get(`/attar/v1/get-all-user`);
+
+    const { data } = await axios.get(`/attar/v1/get-all-user?page=${page}`);
+
     dispatch({
       type: "allUserSuccess",
       payload: data,
     });
+    
   } catch (error) {
     dispatch({
       type: "allUserFail",
@@ -67,6 +70,7 @@ export const getUser = () => async (dispatch) => {
     });
   }
 };
+
 
 export const getUserDetails = (id) => async (dispatch) => {
   try {
