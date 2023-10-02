@@ -26,7 +26,7 @@ const SidNav = () => {
           <Link to="/orders">
             <CiDeliveryTruck /> Order
           </Link>
-          <Link to="/dashboard">
+          <Link to="/media">
             <BiSolidVideos /> Featured Video
           </Link>
         </div>

@@ -1,10 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrders } from '../../Redux/Order/orderAction';
+import OrderCard from './OrderCard';
+import SearchOrder from './SearchOrder';
+import toast from 'react-hot-toast';
 
 const Orders = () => {
     const dispatch = useDispatch();
-    const { orders,totalPages, totalOrders  } = useSelector((state) => state.orders);
+    const { orders,totalPages  } = useSelector((state) => state.orders);
+    const { error,message } = useSelector((state) => state.process);
+
+    useEffect(() => {
+      if (error) {
+        toast.error(error);
+        dispatch({ type: "clearError" });
+      }
+      if (message) {
+        toast.success(message);
+        dispatch({ type: "clearMessage" });
+        
+        
+      }
+    }, [error, message, dispatch]);
+
+
     const [page, setPage] = useState(1);
     useEffect(() => {
    
@@ -14,23 +33,31 @@ const Orders = () => {
       const handlePageChange = (newPage) => {
         setPage(newPage);
       };
+      const handleSearch = (query) => {};
   return (
     <main className="mainctr">
-     
+     <div className="fixed-search-bar">
+          <SearchOrder onSearch={handleSearch} />
+        </div>
       <div className="content">
-        <div className="product-header">
-          <div className="product-header-item-1">Orders Id</div>
-          <div className="product-header-item-2">User Name</div>
-          <div className="product-header-item-3"> Method</div>
-          <div className="product-header-item-4">Amount</div>
-          <div className="product-header-item-5">Status</div>
-          <div className="product-header-item-6">Actions</div>
+        <div className="order-header">
+          <div className="order-header-item-1">Orders Id</div>
+          <div className="order-header-item-2">Method</div>
+          <div className="order-header-item-3">Amount</div>
+          <div className="order-header-item-4">Status</div>
+          <div className="order-header-item-5">Actions</div>
         </div>
         {orders && orders.length > 0 ? (
-          orders.map((user) => (
-            <div key={user._id} className="product-item">
+          orders.map((order) => (
+            <div key={order._id} className="product-item">
               
-                Hii
+              <OrderCard
+                  orderId={order._id}
+                  username={order.user}
+                  paymentMethod={order.paymentMethod}
+                  totalAmount={order.totalAmount}
+                  orderStatus={order.orderStatus}
+                />
               
             </div>
           ))

@@ -1,0 +1,54 @@
+.orderCard {
+    display: flex;
+    border-bottom: 1px double $black;
+    padding: 1rem;
+    width: 100vw;
+    >a{
+    display: flex;
+      > img {
+        width: 15vw;
+        margin-right: 1rem;
+      }
+      > h3 {
+        font-weight: 300;
+        font-size: 1.4rem;
+        padding: 1rem;
+        border-left: 1px dashed $black;
+        width: 25vw;
+        > p {
+          font-weight: 700;
+          font-size: 0.8rem;
+          letter-spacing: 1px;
+          color: $color1;
+        }
+      }
+    }   
+}
+.order-header {
+  display: flex;
+  background-color: #f0f0f0;
+  padding: 10px;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
+
+.order-header-item-1 {
+  width: 25vw;
+  padding: 10px;
+}
+.order-header-item-2 {
+  width: 15vw;
+  padding: 10px;
+}
+.order-header-item-3 {
+  width: 25vw;
+  padding: 10px;
+}
+.order-header-item-4 {
+  width: 15vw;
+  padding: 10px;
+}
+.order-header-item-5 {
+  width: 20vw;
+  padding: 10px;
+}

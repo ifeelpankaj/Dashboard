@@ -10,6 +10,8 @@ import ProductDetail from './Components/Products/ProductDetail';
 import AllUser from './Components/User/AllUser';
 import UserDetail from './Components/User/UserDetail';
 import Orders from './Components/Orders/Orders';
+import ProcessOrder from './Components/Orders/ProcessOrder';
+import Media from './Components/Media/Media';
 
 
 function App() {
@@ -34,6 +36,10 @@ function App() {
           
           {/* Order Conner */}
           <Route exact path="/orders" element={<Orders/>} />
+          <Route exact path="/order/:id" element={<ProcessOrder/>} />
+
+          {/* Media Conner */}
+          <Route exact path="/media" element={<Media/>} />
 
 
 

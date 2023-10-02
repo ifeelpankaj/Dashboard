@@ -7,11 +7,12 @@ export const getAllVideos = () => async (dispatch) => {
       type: "allVideoRequest",
     });
 
-    const { data } = await axios.get(`${serverUrl}/all-feature-vedios`);
+    const { data } = await axios.get(`/attar/v1/all-feature-vedios`);
     dispatch({
       type: "allVideoSuccess",
       payload: data,
     });
+
   } catch (error) {
     dispatch({
       type: "allVideoFail",
@@ -27,7 +28,7 @@ export const createNewVideo = (formData) => async (dispatch) => {
     });
 
 
-    const response = await axios.post(`${serverUrl}/feature-vedio`, formData, {
+    const response = await axios.post(`/attar/v1/feature-vedio`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
